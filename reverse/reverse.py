@@ -38,5 +38,40 @@ class LinkedList:
 
         return False
 
+    def print_ll_elements(self):
+        current = self.head
+        while current is not None:
+            print(current.value)
+            current = current.get_next()
+
     def reverse_list(self, node, prev):
-        pass
+        #Reverse list using recursion
+        
+        if self.head is None:
+            return
+
+        if node.get_next() is None: 
+            self.head = node          
+            node.set_next(prev)
+            return 
+        
+        prevNode = node 
+        
+        nextNode = node.get_next()
+    
+        node.set_next(prev)      
+
+        self.reverse_list(nextNode, prevNode)
+       
+
+# 1 -> 2 -> 3 -> 4
+
+newList = LinkedList()
+newList.add_to_head(1)
+newList.add_to_head(2)
+newList.add_to_head(3)
+newList.add_to_head(4)
+newList.add_to_head(5)
+# newList.print_ll_elements()
+newList.reverse_list(newList.head, None)
+
